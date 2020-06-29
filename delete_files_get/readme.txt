@@ -1,19 +1,20 @@
 ﻿//пример запроса к файлу на сервере
 //файл для удаления должен находиться на сервее в папке с файлами для удаления
-http://sometestdomain.tk/1/delete_file.php?file=435.jpg
+http://sometestdomain.tk/1/delete_f.php?file=435.jpg
 
 //отправляем гет запросом 
 <?php
 $file = $_GET['file']; // Можно добавить перед именем файла путь к директории
 if (file_exists($file))
 {
-unlink ($file);
+	echo "delete file  $file";
+	unlink ($file);
 }
 ?>
 
 //удаление нескольких файлов массивом.
 //запросом
-http://sometestdomain.tk/1/delete_files.php?filear=123.jpg,046.jpg
+http://sometestdomain.tk/1/delete_fs.php?filear=123.jpg,046.jpg
 
 <?php
 $filear = $_GET['filear'];
@@ -22,6 +23,7 @@ foreach($files as $file)
 {
 	if (file_exists($file))
 	{
+		echo "delete file  $file";
 		unlink($file);
 	}
 }
@@ -29,7 +31,7 @@ foreach($files as $file)
 
 //удаление файлов с запросом из БД
 //запросом
-http://sometestdomain.tk/delete_files2.php?id_file=630358998
+http://sometestdomain.tk/delete_f_sql.php?id_file=630358998
 
 <?php
 // сервер БД
